@@ -1,0 +1,7 @@
+name: Makhweb
+description: 'Default theme'
+author: 'Eldorbek Makhkamov'
+homepage: 'https://makhweb.github.io'
+code: makhweb.blog
+require:
+  - RainLabBlog

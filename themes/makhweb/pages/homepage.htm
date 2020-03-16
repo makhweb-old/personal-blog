@@ -1,0 +1,35 @@
+title = "Blog"
+url = "/"
+is_hidden = 0
+==
+use RainLab\Blog\Models\Post;
+
+function onStart()
+{
+    $data = Post::with('categories')->take(50)->get();
+    $skips = [];
+
+    $this['pinnedPost'] = $data->filter(function($post){
+        foreach($post->categories as $category){
+            if($category->slug === 'pinned'){
+                return true;
+            }
+        }
+        return false;
+    })->sortByDesc('published_at')->first();
+
+    $skips[] = $this['pinnedPost']->id;
+
+    $posts = $data->filter(function($post) use ($skips){
+        foreach($skips as $skip){
+            if($post->id === $skip){
+                return false;
+            }
+        }
+        return true;
+    });
+
+    $this['newPosts'] = $posts->take(4);
+    $this['otherPosts'] = $posts->slice(4);
+}
+==

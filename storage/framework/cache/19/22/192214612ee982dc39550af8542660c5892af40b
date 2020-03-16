@@ -1,0 +1,64 @@
+1584376384a:1:{s:12:"homepage.htm";a:8:{s:8:"fileName";s:12:"homepage.htm";s:7:"content";s:816:"title = "Blog"
+url = "/"
+is_hidden = 0
+==
+use RainLab\Blog\Models\Post;
+
+function onStart()
+{
+    $data = Post::with('categories')->take(50)->get();
+    $skips = [];
+
+    $this['pinnedPost'] = $data->filter(function($post){
+        foreach($post->categories as $category){
+            if($category->slug === 'pinned'){
+                return true;
+            }
+        }
+        return false;
+    })->sortByDesc('published_at')->first();
+
+    $skips[] = $this['pinnedPost']->id;
+
+    $posts = $data->filter(function($post) use ($skips){
+        foreach($skips as $skip){
+            if($post->id === $skip){
+                return false;
+            }
+        }
+        return true;
+    });
+
+    $this['newPosts'] = $posts->take(4);
+    $this['otherPosts'] = $posts->slice(4);
+}
+==";s:5:"mtime";i:1584374568;s:6:"markup";s:0:"";s:4:"code";s:766:"use RainLab\Blog\Models\Post;
+
+function onStart()
+{
+    $data = Post::with('categories')->take(50)->get();
+    $skips = [];
+
+    $this['pinnedPost'] = $data->filter(function($post){
+        foreach($post->categories as $category){
+            if($category->slug === 'pinned'){
+                return true;
+            }
+        }
+        return false;
+    })->sortByDesc('published_at')->first();
+
+    $skips[] = $this['pinnedPost']->id;
+
+    $posts = $data->filter(function($post) use ($skips){
+        foreach($skips as $skip){
+            if($post->id === $skip){
+                return false;
+            }
+        }
+        return true;
+    });
+
+    $this['newPosts'] = $posts->take(4);
+    $this['otherPosts'] = $posts->slice(4);
+}";s:5:"title";s:4:"Blog";s:3:"url";s:1:"/";s:9:"is_hidden";s:1:"0";}}
