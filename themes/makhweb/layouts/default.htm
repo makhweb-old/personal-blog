@@ -16,7 +16,7 @@ description = "Default layout"
 
         <!-- Header -->
         <header id="layout-header">
-            {# partial 'site/header' #}
+            {% partial 'nav' %}
         </header>
 
         <!-- Content -->
@@ -25,7 +25,6 @@ description = "Default layout"
         </section>
 
 
-        {% framework extras %}
         {% scripts %}
 
     </body>

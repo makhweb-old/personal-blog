@@ -1,0 +1,29 @@
+title = "Post"
+url = "/post/:id/:slug"
+layout = "default"
+is_hidden = 0
+==
+<?php
+use RainLab\Blog\Models\Post;
+
+function onStart()
+{
+    $this['post'] = Post::find( $this->param('id') );
+}
+?>
+==
+<div id="content" class="mx-auto container mt-8">
+    <div>
+      <a href="#" class="text-3xl font-semibold">
+        {{ post.title }}
+      </a>
+      <div class="text-sm text-blue-500 mt-1">
+        <a class="pr-2 hover:underline" href="#">Programming,</a>
+        <a class="pr-2 hover:underline" href="#">PHP,</a>
+        <a class="pr-2 hover:underline" href="#">Tricks</a>
+      </div>
+    </div>
+    <div class="mt-8">
+      {{ post.content_html | raw }}
+    </div>
+  </div>

@@ -1,0 +1,48 @@
+1584387226a:1:{s:8:"post.htm";a:9:{s:8:"fileName";s:8:"post.htm";s:7:"content";s:702:"title = "Post"
+url = "/post/:id/:slug"
+layout = "default"
+is_hidden = 0
+==
+<?php
+use RainLab\Blog\Models\Post;
+
+function onStart()
+{
+    $this['post'] = Post::find( $this->param('id') );
+}
+?>
+==
+<div id="content" class="mx-auto container mt-8">
+    <div>
+      <a href="#" class="text-3xl font-semibold">
+        {{ post.title }}
+      </a>
+      <div class="text-sm text-blue-500 mt-1">
+        <a class="pr-2 hover:underline" href="#">Programming,</a>
+        <a class="pr-2 hover:underline" href="#">PHP,</a>
+        <a class="pr-2 hover:underline" href="#">Tricks</a>
+      </div>
+    </div>
+    <div class="mt-8">
+      {{ post.content_html | raw }}
+    </div>
+  </div>";s:5:"mtime";i:1584386626;s:6:"markup";s:493:"<div id="content" class="mx-auto container mt-8">
+    <div>
+      <a href="#" class="text-3xl font-semibold">
+        {{ post.title }}
+      </a>
+      <div class="text-sm text-blue-500 mt-1">
+        <a class="pr-2 hover:underline" href="#">Programming,</a>
+        <a class="pr-2 hover:underline" href="#">PHP,</a>
+        <a class="pr-2 hover:underline" href="#">Tricks</a>
+      </div>
+    </div>
+    <div class="mt-8">
+      {{ post.content_html | raw }}
+    </div>
+  </div>";s:4:"code";s:112:"use RainLab\Blog\Models\Post;
+
+function onStart()
+{
+    $this['post'] = Post::find( $this->param('id') );
+}";s:5:"title";s:4:"Post";s:3:"url";s:15:"/post/:id/:slug";s:6:"layout";s:7:"default";s:9:"is_hidden";s:1:"0";}}

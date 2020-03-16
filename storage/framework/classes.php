@@ -26,4 +26,10 @@
   'RainLab\\Sitemap\\Models\\Definition' => 'plugins\\rainlab\\sitemap\\models\\Definition.php',
   'RainLab\\Sitemap\\Classes\\DefinitionItem' => 'plugins\\rainlab\\sitemap\\classes\\DefinitionItem.php',
   'RainLab\\Sitemap\\FormWidgets\\SitemapItems' => 'plugins\\rainlab\\sitemap\\formwidgets\\SitemapItems.php',
+  'ginopane\\blogtimetoread\\Plugin' => 'plugins\\ginopane\\blogtimetoread\\Plugin.php',
+  'rainlab\\translate\\Plugin' => 'plugins\\rainlab\\translate\\Plugin.php',
+  'RainLab\\Translate\\Models\\Locale' => 'plugins\\rainlab\\translate\\models\\Locale.php',
+  'RainLab\\Translate\\Models\\Attribute' => 'plugins\\rainlab\\translate\\models\\Attribute.php',
+  'GinoPane\\BlogTimeToRead\\Models\\Settings' => 'plugins\\ginopane\\blogtimetoread\\models\\Settings.php',
+  'makhweb\\lights\\Plugin' => 'plugins\\makhweb\\lights\\Plugin.php',
 );
