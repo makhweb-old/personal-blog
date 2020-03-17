@@ -78,7 +78,7 @@ class __TwigTemplate_b30778e4e4ad581bfbe712abb20e19648accbb3d176df055d7b1aa3bfc2
         echo "        </header>
 
         <!-- Content -->
-        <section id=\"layout-content\">
+        <section class=\"mx-auto container mt-8\" id=\"layout-content\">
             ";
         // line 22
         echo $this->env->getExtension('Cms\Twig\Extension')->pageFunction();
@@ -133,7 +133,7 @@ class __TwigTemplate_b30778e4e4ad581bfbe712abb20e19648accbb3d176df055d7b1aa3bfc2
         </header>
 
         <!-- Content -->
-        <section id=\"layout-content\">
+        <section class=\"mx-auto container mt-8\" id=\"layout-content\">
             {% page %}
         </section>
 

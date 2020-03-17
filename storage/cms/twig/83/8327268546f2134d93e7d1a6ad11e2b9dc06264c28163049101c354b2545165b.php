@@ -34,7 +34,7 @@ class __TwigTemplate_b136e832ce6b85baf302e472b1870feb5dff866e38481df81f74d6206df
     {
         $macros = $this->macros;
         // line 1
-        echo "<div id=\"content\" class=\"mx-auto container mt-8\">
+        echo "<div id=\"content\">
     <div>
       <a href=\"#\" class=\"text-3xl font-semibold\">
         ";
@@ -74,7 +74,7 @@ class __TwigTemplate_b136e832ce6b85baf302e472b1870feb5dff866e38481df81f74d6206df
 
     public function getSourceContext()
     {
-        return new Source("<div id=\"content\" class=\"mx-auto container mt-8\">
+        return new Source("<div id=\"content\">
     <div>
       <a href=\"#\" class=\"text-3xl font-semibold\">
         {{ post.title }}

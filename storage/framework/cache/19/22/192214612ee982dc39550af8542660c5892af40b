@@ -1,4 +1,4 @@
-1584387032a:1:{s:12:"homepage.htm";a:9:{s:8:"fileName";s:12:"homepage.htm";s:7:"content";s:3801:"title = "Blog"
+1584416042a:1:{s:12:"homepage.htm";a:9:{s:8:"fileName";s:12:"homepage.htm";s:7:"content";s:3556:"title = "Blog"
 url = "/"
 layout = "default"
 is_hidden = 0
@@ -19,7 +19,7 @@ function onStart()
         return false;
     })->sortByDesc('published_at')->first();
     
-    $skips[] = $this['pinnedPost']->id;
+    $skips[] = optional($this['pinnedPost'])->id;
 
     $posts = $data->filter(function($post) use ($skips){
         foreach($skips as $skip){
@@ -33,19 +33,11 @@ function onStart()
     $this['newPosts'] = $posts->take(4);
     $this['otherPosts'] = $posts->slice(4);
 }
-
-function readingTime( $content, $wpm = 250 ) 
-{
-    $clean_content = strip_shortcodes( $content );
-    $clean_content = strip_tags( $clean_content );
-    $word_count = str_word_count( $clean_content );
-    $time = ceil( $word_count / $wpm );
-    return $time;
-}
 ?>
 ==
-<div id="content" class="mx-auto container mt-8">
+<div id="content">
   <div id="posts">
+   {% if pinnedPost.exists %}
     <div class="lg:flex bg-gray-100 shadow p-5">
       <div class="lg:w-1/3 lg:block">
         <img src="{{ 'assets/images/laravel-7.png' | theme }}" class="rounded-md" alt="featured image" />
@@ -59,6 +51,7 @@ function readingTime( $content, $wpm = 250 )
         </div>
       </div>
     </div>
+    {% endif %}
     <div class="mt-5">
       <p class="text-2xl font-serif">Last posts</p>
       <hr />
@@ -109,8 +102,9 @@ function readingTime( $content, $wpm = 250 )
     </div>
     {% endfor %}
   </div>
-</div>";s:5:"mtime";i:1584386413;s:6:"markup";s:2694:"<div id="content" class="mx-auto container mt-8">
+</div>";s:5:"mtime";i:1584411248;s:6:"markup";s:2711:"<div id="content">
   <div id="posts">
+   {% if pinnedPost.exists %}
     <div class="lg:flex bg-gray-100 shadow p-5">
       <div class="lg:w-1/3 lg:block">
         <img src="{{ 'assets/images/laravel-7.png' | theme }}" class="rounded-md" alt="featured image" />
@@ -124,6 +118,7 @@ function readingTime( $content, $wpm = 250 )
         </div>
       </div>
     </div>
+    {% endif %}
     <div class="mt-5">
       <p class="text-2xl font-serif">Last posts</p>
       <hr />
@@ -174,7 +169,7 @@ function readingTime( $content, $wpm = 250 )
     </div>
     {% endfor %}
   </div>
-</div>";s:4:"code";s:1024:"use RainLab\Blog\Models\Post;
+</div>";s:4:"code";s:762:"use RainLab\Blog\Models\Post;
 
 function onStart()
 {
@@ -189,7 +184,7 @@ function onStart()
         return false;
     })->sortByDesc('published_at')->first();
     
-    $skips[] = $this['pinnedPost']->id;
+    $skips[] = optional($this['pinnedPost'])->id;
 
     $posts = $data->filter(function($post) use ($skips){
         foreach($skips as $skip){
@@ -202,13 +197,4 @@ function onStart()
 
     $this['newPosts'] = $posts->take(4);
     $this['otherPosts'] = $posts->slice(4);
-}
-
-function readingTime( $content, $wpm = 250 ) 
-{
-    $clean_content = strip_shortcodes( $content );
-    $clean_content = strip_tags( $clean_content );
-    $word_count = str_word_count( $clean_content );
-    $time = ceil( $word_count / $wpm );
-    return $time;
 }";s:5:"title";s:4:"Blog";s:3:"url";s:1:"/";s:6:"layout";s:7:"default";s:9:"is_hidden";s:1:"0";}}
