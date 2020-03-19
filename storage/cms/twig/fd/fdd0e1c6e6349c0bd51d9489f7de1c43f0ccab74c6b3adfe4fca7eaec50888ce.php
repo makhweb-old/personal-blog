@@ -56,10 +56,23 @@ class __TwigTemplate_1d6be67c77e5e4bcbbd245941a2d360e62247241d00097e816cf0b009c7
               >
             </div>
           </div>
-          <div class=\"text-lg text-blue-500 font-semibold rounded\">
-            <a href=\"#\" class=\"px-3 hover:text-blue-900\">Login</a>/
-            <a href=\"#\" class=\"px-3 hover:text-blue-900\">Sign up</a>
-          </div>
+         <template x-if=\"user\">
+            <div class=\"text-lg text-blue-500 font-semibold rounded\">
+              <a href=\"#\" class=\"px-3 hover:text-blue-900\" x-text=\"user.name\"></a>
+            </div>
+          </template>
+          <template x-if=\"!user\">
+            <div class=\"text-lg text-blue-500 font-semibold rounded\">
+              <a href=\"";
+        // line 27
+        echo $this->extensions['Cms\Twig\Extension']->pageFilter("login");
+        echo "\" class=\"px-3 hover:text-blue-900\">Login</a>/
+              <a href=\"";
+        // line 28
+        echo $this->extensions['Cms\Twig\Extension']->pageFilter("register");
+        echo "\" class=\"px-3 hover:text-blue-900\">Sign up</a>
+            </div>
+          </template>
         </div>
       </div>
     </header>";
@@ -77,7 +90,7 @@ class __TwigTemplate_1d6be67c77e5e4bcbbd245941a2d360e62247241d00097e816cf0b009c7
 
     public function getDebugInfo()
     {
-        return array (  43 => 5,  37 => 1,);
+        return array (  72 => 28,  68 => 27,  43 => 5,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -101,10 +114,17 @@ class __TwigTemplate_1d6be67c77e5e4bcbbd245941a2d360e62247241d00097e816cf0b009c7
               >
             </div>
           </div>
-          <div class=\"text-lg text-blue-500 font-semibold rounded\">
-            <a href=\"#\" class=\"px-3 hover:text-blue-900\">Login</a>/
-            <a href=\"#\" class=\"px-3 hover:text-blue-900\">Sign up</a>
-          </div>
+         <template x-if=\"user\">
+            <div class=\"text-lg text-blue-500 font-semibold rounded\">
+              <a href=\"#\" class=\"px-3 hover:text-blue-900\" x-text=\"user.name\"></a>
+            </div>
+          </template>
+          <template x-if=\"!user\">
+            <div class=\"text-lg text-blue-500 font-semibold rounded\">
+              <a href=\"{{ 'login' | page }}\" class=\"px-3 hover:text-blue-900\">Login</a>/
+              <a href=\"{{ 'register' | page }}\" class=\"px-3 hover:text-blue-900\">Sign up</a>
+            </div>
+          </template>
         </div>
       </div>
     </header>", "C:\\laragon\\www\\cms/themes/makhweb/partials/nav.htm", "");

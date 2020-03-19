@@ -18,10 +18,17 @@
               >
             </div>
           </div>
-          <div class="text-lg text-blue-500 font-semibold rounded">
-            <a href="#" class="px-3 hover:text-blue-900">Login</a>/
-            <a href="#" class="px-3 hover:text-blue-900">Sign up</a>
-          </div>
+         <template x-if="user">
+            <div class="text-lg text-blue-500 font-semibold rounded">
+              <a href="#" class="px-3 hover:text-blue-900" x-text="user.name"></a>
+            </div>
+          </template>
+          <template x-if="!user">
+            <div class="text-lg text-blue-500 font-semibold rounded">
+              <a href="{{ 'login' | page }}" class="px-3 hover:text-blue-900">Login</a>/
+              <a href="{{ 'register' | page }}" class="px-3 hover:text-blue-900">Sign up</a>
+            </div>
+          </template>
         </div>
       </div>
     </header>

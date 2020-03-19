@@ -149,14 +149,14 @@ class __TwigTemplate_020da471a6b41718185badb88379c581d64e0618ca429e384a2e54fc878
         <div class=\"px-4 inline\">
           <img width=\"25\" src=\"";
             // line 56
-            echo $this->extensions['Cms\Twig\Extension']->themeFilter("assets/icons/eye.svg");
+            echo call_user_func_array($this->env->getFilter('icon')->getCallable(), ["view"]);
             echo "\" class=\"inline\" alt=\"\" />
           <span class=\"text-sm text-green-500\">+11</span>
         </div>
         <div class=\"px-4 inline\">
           <img width=\"20\" src=\"";
             // line 60
-            echo $this->extensions['Cms\Twig\Extension']->themeFilter("assets/icons/blog.svg");
+            echo call_user_func_array($this->env->getFilter('icon')->getCallable(), ["comment"]);
             echo "\" class=\"inline\" alt=\"\" />
           <span class=\"text-sm text-green-500\">88</span>
         </div>
@@ -245,11 +245,11 @@ class __TwigTemplate_020da471a6b41718185badb88379c581d64e0618ca429e384a2e54fc878
 
       <div class=\"my-3 border inline-block py-1 \">
         <div class=\"px-4 inline\">
-          <img width=\"25\" src=\"{{ 'assets/icons/eye.svg' | theme }}\" class=\"inline\" alt=\"\" />
+          <img width=\"25\" src=\"{{ 'view' | icon }}\" class=\"inline\" alt=\"\" />
           <span class=\"text-sm text-green-500\">+11</span>
         </div>
         <div class=\"px-4 inline\">
-          <img width=\"20\" src=\"{{ 'assets/icons/blog.svg' | theme }}\" class=\"inline\" alt=\"\" />
+          <img width=\"20\" src=\"{{ 'comment' | icon }}\" class=\"inline\" alt=\"\" />
           <span class=\"text-sm text-green-500\">88</span>
         </div>
       </div>

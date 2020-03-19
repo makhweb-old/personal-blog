@@ -1,4 +1,4 @@
-1584416042a:1:{s:7:"nav.htm";a:6:{s:8:"fileName";s:7:"nav.htm";s:7:"content";s:1203:"==
+1584604231a:1:{s:7:"nav.htm";a:6:{s:8:"fileName";s:7:"nav.htm";s:7:"content";s:1541:"==
 <header class="shadow">
       <div class="container mx-auto h-16">
         <div class="flex justify-between items-center h-full">
@@ -18,13 +18,20 @@
               >
             </div>
           </div>
-          <div class="text-lg text-blue-500 font-semibold rounded">
-            <a href="#" class="px-3 hover:text-blue-900">Login</a>/
-            <a href="#" class="px-3 hover:text-blue-900">Sign up</a>
-          </div>
+         <template x-if="user">
+            <div class="text-lg text-blue-500 font-semibold rounded">
+              <a href="#" class="px-3 hover:text-blue-900" x-text="user.name"></a>
+            </div>
+          </template>
+          <template x-if="!user">
+            <div class="text-lg text-blue-500 font-semibold rounded">
+              <a href="{{ 'login' | page }}" class="px-3 hover:text-blue-900">Login</a>/
+              <a href="{{ 'register' | page }}" class="px-3 hover:text-blue-900">Sign up</a>
+            </div>
+          </template>
         </div>
       </div>
-    </header>";s:5:"mtime";i:1584383898;s:6:"markup";s:1199:"<header class="shadow">
+    </header>";s:5:"mtime";i:1584603627;s:6:"markup";s:1537:"<header class="shadow">
       <div class="container mx-auto h-16">
         <div class="flex justify-between items-center h-full">
           <div class="flex items-center">
@@ -43,10 +50,17 @@
               >
             </div>
           </div>
-          <div class="text-lg text-blue-500 font-semibold rounded">
-            <a href="#" class="px-3 hover:text-blue-900">Login</a>/
-            <a href="#" class="px-3 hover:text-blue-900">Sign up</a>
-          </div>
+         <template x-if="user">
+            <div class="text-lg text-blue-500 font-semibold rounded">
+              <a href="#" class="px-3 hover:text-blue-900" x-text="user.name"></a>
+            </div>
+          </template>
+          <template x-if="!user">
+            <div class="text-lg text-blue-500 font-semibold rounded">
+              <a href="{{ 'login' | page }}" class="px-3 hover:text-blue-900">Login</a>/
+              <a href="{{ 'register' | page }}" class="px-3 hover:text-blue-900">Sign up</a>
+            </div>
+          </template>
         </div>
       </div>
     </header>";s:4:"code";N;s:17:"_PARSER_ERROR_INI";s:0:"";}}

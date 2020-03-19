@@ -37,60 +37,58 @@ class __TwigTemplate_b30778e4e4ad581bfbe712abb20e19648accbb3d176df055d7b1aa3bfc2
         echo "<!DOCTYPE html>
 <html>
     <head>
-        <meta charset=\"utf-8\">
-        <title>Makhweb - ";
-        // line 5
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["this"] ?? null), "page", [], "any", false, false, false, 5), "title", [], "any", false, false, false, 5), "html", null, true);
-        echo "</title>
-        <meta name=\"description\" content=\"";
-        // line 6
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["this"] ?? null), "page", [], "any", false, false, false, 6), "meta_description", [], "any", false, false, false, 6), "html", null, true);
-        echo "\">
-        <meta name=\"title\" content=\"";
-        // line 7
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["this"] ?? null), "page", [], "any", false, false, false, 7), "meta_title", [], "any", false, false, false, 7), "html", null, true);
-        echo "\">
-        <meta name=\"author\" content=\"";
+      <!-- Metas -->
+      <meta charset=\"utf-8\" />
+      <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />
+      <!-- Icons && Styles -->
+      <link href=\"";
         // line 8
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["this"] ?? null), "theme", [], "any", false, false, false, 8), "author", [], "any", false, false, false, 8), "html", null, true);
-        echo "\">
-        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-        <link href=\"";
-        // line 10
         echo $this->extensions['Cms\Twig\Extension']->themeFilter("assets/css/app.css");
         echo "\" rel=\"stylesheet\">
-        ";
-        // line 11
+      ";
+        // line 9
         echo $this->env->getExtension('Cms\Twig\Extension')->assetsFunction('css');
         echo $this->env->getExtension('Cms\Twig\Extension')->displayBlock('styles');
+        // line 10
+        echo "      <!-- Scripts -->
+      <script src=\"";
+        // line 11
+        echo $this->extensions['Cms\Twig\Extension']->themeFilter("assets/js/alpine/app.js");
+        echo "\" defer></script>
+      <title>Makhweb - ";
         // line 12
-        echo "    </head>
-    <body>
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["this"] ?? null), "page", [], "any", false, false, false, 12), "title", [], "any", false, false, false, 12), "html", null, true);
+        echo "</title>
+    </head>
+    <body x-data=\"";
+        // line 14
+        echo twig_escape_filter($this->env, json_encode(($context["data"] ?? null)), "html", null, true);
+        echo "\">
 
         <!-- Header -->
         <header id=\"layout-header\">
             ";
-        // line 17
+        // line 18
         $context['__cms_partial_params'] = [];
         echo $this->env->getExtension('Cms\Twig\Extension')->partialFunction("nav"        , $context['__cms_partial_params']        , true        );
         unset($context['__cms_partial_params']);
-        // line 18
+        // line 19
         echo "        </header>
 
         <!-- Content -->
         <section class=\"mx-auto container mt-8\" id=\"layout-content\">
             ";
-        // line 22
-        echo $this->env->getExtension('Cms\Twig\Extension')->pageFunction();
         // line 23
+        echo $this->env->getExtension('Cms\Twig\Extension')->pageFunction();
+        // line 24
         echo "        </section>
 
 
         ";
-        // line 26
+        // line 27
         echo $this->env->getExtension('Cms\Twig\Extension')->assetsFunction('js');
         echo $this->env->getExtension('Cms\Twig\Extension')->displayBlock('scripts');
-        // line 27
+        // line 28
         echo "
     </body>
 </html>";
@@ -108,7 +106,7 @@ class __TwigTemplate_b30778e4e4ad581bfbe712abb20e19648accbb3d176df055d7b1aa3bfc2
 
     public function getDebugInfo()
     {
-        return array (  94 => 27,  91 => 26,  86 => 23,  84 => 22,  78 => 18,  74 => 17,  67 => 12,  64 => 11,  60 => 10,  55 => 8,  51 => 7,  47 => 6,  43 => 5,  37 => 1,);
+        return array (  92 => 28,  89 => 27,  84 => 24,  82 => 23,  76 => 19,  72 => 18,  65 => 14,  60 => 12,  56 => 11,  53 => 10,  50 => 9,  46 => 8,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -116,16 +114,17 @@ class __TwigTemplate_b30778e4e4ad581bfbe712abb20e19648accbb3d176df055d7b1aa3bfc2
         return new Source("<!DOCTYPE html>
 <html>
     <head>
-        <meta charset=\"utf-8\">
-        <title>Makhweb - {{ this.page.title }}</title>
-        <meta name=\"description\" content=\"{{ this.page.meta_description }}\">
-        <meta name=\"title\" content=\"{{ this.page.meta_title }}\">
-        <meta name=\"author\" content=\"{{ this.theme.author }}\">
-        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-        <link href=\"{{ 'assets/css/app.css'|theme }}\" rel=\"stylesheet\">
-        {% styles %}
+      <!-- Metas -->
+      <meta charset=\"utf-8\" />
+      <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />
+      <!-- Icons && Styles -->
+      <link href=\"{{ 'assets/css/app.css' | theme }}\" rel=\"stylesheet\">
+      {% styles %}
+      <!-- Scripts -->
+      <script src=\"{{ 'assets/js/alpine/app.js' | theme }}\" defer></script>
+      <title>Makhweb - {{ this.page.title }}</title>
     </head>
-    <body>
+    <body x-data=\"{{ data | json_encode }}\">
 
         <!-- Header -->
         <header id=\"layout-header\">

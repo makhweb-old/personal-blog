@@ -1,6 +1,7 @@
 title = "Post"
 url = "/post/:id/:slug"
 layout = "default"
+description = "Post page"
 is_hidden = 0
 ==
 <?php
@@ -9,6 +10,11 @@ use RainLab\Blog\Models\Post;
 function onStart()
 {
     $this['post'] = Post::find( $this->param('id') );
+}
+
+function onEnd()
+{
+    $this->page->title = $this->post->title;
 }
 ?>
 ==

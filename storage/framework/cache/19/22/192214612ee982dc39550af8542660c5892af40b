@@ -1,4 +1,4 @@
-1584416042a:1:{s:12:"homepage.htm";a:9:{s:8:"fileName";s:12:"homepage.htm";s:7:"content";s:3556:"title = "Blog"
+1584604285a:1:{s:12:"homepage.htm";a:9:{s:8:"fileName";s:12:"homepage.htm";s:7:"content";s:3524:"title = "Blog"
 url = "/"
 layout = "default"
 is_hidden = 0
@@ -90,11 +90,11 @@ function onStart()
 
       <div class="my-3 border inline-block py-1 ">
         <div class="px-4 inline">
-          <img width="25" src="{{ 'assets/icons/eye.svg' | theme }}" class="inline" alt="" />
+          <img width="25" src="{{ 'view' | icon }}" class="inline" alt="" />
           <span class="text-sm text-green-500">+11</span>
         </div>
         <div class="px-4 inline">
-          <img width="20" src="{{ 'assets/icons/blog.svg' | theme }}" class="inline" alt="" />
+          <img width="20" src="{{ 'comment' | icon }}" class="inline" alt="" />
           <span class="text-sm text-green-500">88</span>
         </div>
       </div>
@@ -102,7 +102,7 @@ function onStart()
     </div>
     {% endfor %}
   </div>
-</div>";s:5:"mtime";i:1584411248;s:6:"markup";s:2711:"<div id="content">
+</div>";s:5:"mtime";i:1584597110;s:6:"markup";s:2679:"<div id="content">
   <div id="posts">
    {% if pinnedPost.exists %}
     <div class="lg:flex bg-gray-100 shadow p-5">
@@ -157,11 +157,11 @@ function onStart()
 
       <div class="my-3 border inline-block py-1 ">
         <div class="px-4 inline">
-          <img width="25" src="{{ 'assets/icons/eye.svg' | theme }}" class="inline" alt="" />
+          <img width="25" src="{{ 'view' | icon }}" class="inline" alt="" />
           <span class="text-sm text-green-500">+11</span>
         </div>
         <div class="px-4 inline">
-          <img width="20" src="{{ 'assets/icons/blog.svg' | theme }}" class="inline" alt="" />
+          <img width="20" src="{{ 'comment' | icon }}" class="inline" alt="" />
           <span class="text-sm text-green-500">88</span>
         </div>
       </div>

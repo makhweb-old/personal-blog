@@ -1,18 +1,28 @@
 description = "Default layout"
 ==
+<?php
+function onStart()
+{
+    $this['data'] = [
+        'user' => Auth::user()
+    ];
+}
+?>
+==
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>Makhweb - {{ this.page.title }}</title>
-        <meta name="description" content="{{ this.page.meta_description }}">
-        <meta name="title" content="{{ this.page.meta_title }}">
-        <meta name="author" content="{{ this.theme.author }}">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="{{ 'assets/css/app.css'|theme }}" rel="stylesheet">
-        {% styles %}
+      <!-- Metas -->
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <!-- Icons && Styles -->
+      <link href="{{ 'assets/css/app.css' | theme }}" rel="stylesheet">
+      {% styles %}
+      <!-- Scripts -->
+      <script src="{{ 'assets/js/alpine/app.js' | theme }}" defer></script>
+      <title>Makhweb - {{ this.page.title }}</title>
     </head>
-    <body>
+    <body x-data="{{ data | json_encode }}">
 
         <!-- Header -->
         <header id="layout-header">

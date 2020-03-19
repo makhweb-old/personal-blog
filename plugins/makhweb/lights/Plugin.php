@@ -79,11 +79,27 @@ class Plugin extends PluginBase
         return [
             'functions' => [
                 'readingTime' => [$this, 'readingTime'],
-            ]
+            ],
+            'filters' => [
+                'icon' => [$this, 'getIconsPath'],
+            ],
         ];
     }
 
-    public function readingTime( $content, $wpm = 250 ) 
+    /**
+     * Get icons path in theme's folder
+     */
+    public function getIconsPath( string $icon ) : string
+    {
+        return url(
+            "themes/makhweb/assets/icons/svg/icon-" . $icon . ".svg"
+        );
+    }
+
+    /**
+     * Get estimated reading time
+     */
+    public function readingTime( string $content, int $wpm = 250 ) : int
     {
         $clean_content = strip_tags( $content );
         $word_count = str_word_count( $clean_content );
