@@ -69,4 +69,5 @@
   'RainLab\\Pages\\Classes\\Snippet' => 'plugins\\rainlab\\pages\\classes\\Snippet.php',
   'system\\Controllers\\eventlogs' => 'modules\\system\\controllers\\eventlogs.php',
   'backend\\Controllers\\accesslogs' => 'modules\\backend\\controllers\\accesslogs.php',
+  'Makhweb\\Lights\\Models\\Comment' => 'plugins\\makhweb\\lights\\models\\Comment.php',
 );
