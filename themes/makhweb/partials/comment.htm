@@ -3,8 +3,8 @@
     <div class="mb-6">
         <p class="font-semibold">{{ comment.user.name }}</p>
         <div class="mt-1">{{ comment.content }}</div>
-        <span class="mt-3 text-sm hover:underline text-blue-600 cursor-pointer"
-            @click="$dispatch('updated', { replied_to: {{ comment.id }}, name: '{{ comment.user.name }}' })">Reply</span>
+        <a href="#comments" class="mt-3 text-sm hover:underline text-blue-600 cursor-pointer"
+            @click="$dispatch('updated', { replied_to: {{ comment.id }}, name: '{{ comment.user.name }}' })">Reply</a>
             {% if comment.comments %}
                 {% for nestedComment in comment.comments %}
                     {% partial 'comment' comment=nestedComment %}

@@ -24,11 +24,7 @@ function onStart()
         return redirect()->back();
     }
     
-    $this['post'] = Post::findOrFail( $this->param('id') );
-    $this['comments'] = Comment::whereHas('post', function ($query) {
-        $query->where('id', $this->param('id'));
-    })->where('replied_to', '')->get();
-    //dd($this['comments']);
+    $this['post'] = Post::findOrFail( $this->param('id') )->load('comments');
 }
 
 function onEnd()
@@ -82,8 +78,8 @@ function onEnd()
       </form>
       <hr>
       <div class="py-6">
-        {% for comment in comments %}
-            {% partial 'comment' comment=comment %}
+        {% for postComment in post.comments %}
+            {% partial 'comment' comment=postComment %}
         {% endfor %}
       </div>
     </div>

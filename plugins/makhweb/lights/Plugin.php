@@ -2,6 +2,9 @@
 
 use Backend;
 use System\Classes\PluginBase;
+use RainLab\Blog\Models\Post;
+use RainLab\User\Models\User;
+use Makhweb\Lights\Models\Comment;
 
 /**
  * Lights Plugin Information File
@@ -40,7 +43,12 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-
+        Post::extend(function($model){
+            $model->hasMany['comments'] = [Comment::class, 'scope' => 'isNotNested'];
+        });
+        User::extend(function($model){
+            $model->hasMany['comments'] = Comment::class;
+        });
     }
 
     /**

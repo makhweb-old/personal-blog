@@ -13,9 +13,9 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->longText('content');
             $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedInteger('post_id');
-            $table->foreign('post_id')->references('id')->on('rainlab_blog_posts');
+            $table->foreign('post_id')->references('id')->on('rainlab_blog_posts')->onDelete('cascade');
             $table->unsignedInteger('replied_to')->nullable();
             $table->timestamps();
         });

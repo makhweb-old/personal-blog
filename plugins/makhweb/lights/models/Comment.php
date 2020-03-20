@@ -66,4 +66,12 @@ class Comment extends Model
         'user' => User::class,
         'post' => Post::class
     ];
+
+    /**
+     * Scopes
+     */
+    public function scopeIsNotNested($query)
+    {
+        return $query->where('replied_to', '=', '');
+    }
 }

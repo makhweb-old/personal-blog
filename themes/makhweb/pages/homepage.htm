@@ -9,7 +9,7 @@ use RainLab\Blog\Models\Post;
 
 function onStart()
 {
-    $data = Post::with('categories')->take(50)->get();
+    $data = Post::with(['categories'])->withCount('comments')->take(50)->get();
 
     $this['pinnedPost'] = $data->filter(function($post){
         foreach($post->categories as $category){
@@ -92,11 +92,11 @@ function onStart()
       <div class="my-3 border inline-block py-1 ">
         <div class="px-4 inline">
           <img width="25" src="{{ 'view' | icon }}" class="inline" alt="" />
-          <span class="text-sm text-green-500">+11</span>
+          <span class="text-sm text-green-500">11</span>
         </div>
         <div class="px-4 inline">
           <img width="20" src="{{ 'comment' | icon }}" class="inline" alt="" />
-          <span class="text-sm text-green-500">88</span>
+          <span class="text-sm text-green-500">{{ post.comments_count }}</span>
         </div>
       </div>
       <hr />

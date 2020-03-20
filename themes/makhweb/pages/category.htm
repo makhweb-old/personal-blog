@@ -9,7 +9,7 @@ use RainLab\Blog\Models\Category;
 
 function onStart()
 {
-    $this['category'] = Category::findOrFail( $this->param('id') )->load('posts');
+    $this['category'] = Category::findOrFail( $this->param('id') )->load('posts.comments');
 }
 ?>
 ==
@@ -35,7 +35,7 @@ function onStart()
         </div>
         <div class="px-4 inline">
           <img width="20" src="{{ 'comment' | icon }}" class="inline" alt="" />
-          <span class="text-sm text-green-500">88</span>
+          <span class="text-sm text-green-500">{{ post.comments.count }}</span>
         </div>
       </div>
       <hr />
