@@ -1,0 +1,44 @@
+title = "Category"
+url = "/category/:id/:slug"
+layout = "default"
+description = "Category page"
+is_hidden = 0
+==
+<?php
+use RainLab\Blog\Models\Category;
+
+function onStart()
+{
+    $this['posts'] = Category::findOrFail( $this->param('id') )->posts;
+}
+?>
+==
+<div class="py-8">
+        <p class="text-3xl font-serif pb-3">Programming</p>
+        <hr>
+        <div id="posts">
+            {% for post in posts %}
+    <div class="mt-3">
+      <a href="{{ 'post' | page({ slug: post.slug, id: post.id }) }}" class="text-xl font-semibold">
+        {{ post.title }}
+      </a>
+      <div class="mt-5">
+        {{ post.excerpt }}
+      </div>
+      <a class="text-sm text-blue-500 mt-3 block" href="{{ 'post' | page({ slug: post.slug, id: post.id }) }}">Show more</a>
+
+      <div class="my-3 border inline-block py-1 ">
+        <div class="px-4 inline">
+          <img width="25" src="{{ 'view' | icon }}" class="inline" alt="" />
+          <span class="text-sm text-green-500">+11</span>
+        </div>
+        <div class="px-4 inline">
+          <img width="20" src="{{ 'comment' | icon }}" class="inline" alt="" />
+          <span class="text-sm text-green-500">88</span>
+        </div>
+      </div>
+      <hr />
+    </div>
+    {% endfor %}
+        </div>
+</div>

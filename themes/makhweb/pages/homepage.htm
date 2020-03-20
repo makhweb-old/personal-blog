@@ -35,7 +35,7 @@ function onStart()
 }
 ?>
 ==
-<div id="content">
+<div id="content" class="py-8">
   <div id="posts">
    {% if pinnedPost.exists %}
     <div class="lg:flex bg-gray-100 shadow p-5">
@@ -75,14 +75,10 @@ function onStart()
         {{ post.title }}
       </a>
       <div class="text-sm text-blue-500 mt-1">
-        <a class="pr-2 hover:underline" href="#">Programming,</a>
-        <a class="pr-2 hover:underline" href="#">PHP,</a>
-        <a class="pr-2 hover:underline" href="#">Tricks</a>
+      {% for category in post.categories %}
+        <a class="pr-1 hover:underline" href="{{ 'category' | page({ id: category.id, slug: category.slug }) }}">{{ category.name }}{% if not loop.last %},{% endif %}</a>
+      {% endfor %}
       </div>
-      <a href="{{ 'post' | page({ slug: post.slug }) }}"
-        class="border border-purple-500 hover:bg-purple-500 hover:text-white text-purple-900 rounded text-sm inline-block mt-2 p-1">
-        Translate
-      </a>
       <div class="mt-5">
         {{ post.excerpt }}
       </div>

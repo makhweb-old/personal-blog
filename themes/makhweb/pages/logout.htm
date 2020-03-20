@@ -1,0 +1,13 @@
+title = "Logout"
+url = "/logout"
+description = "Logout page"
+is_hidden = 0
+==
+<?php
+function onStart()
+{
+    Auth::logout();
+	return Redirect::to('/');
+}
+?>
+==

@@ -8,14 +8,14 @@ is_hidden = 0
 function onInit()
 {
     if(Auth::check()){
-        abort(400, "You already in the system!");
+        abort(400, "You're already in the system!");
     }
 }
 function onStart()
 {
     $rules = [
-        'email' => 'required|email|max:30',
-        'username' => 'required|min:5|max:20',
+        'email' => 'required|email|max:30|unique:users,email',
+        'username' => 'required|min:5|max:20|unique:users,username',
         'name' => 'required|min:8|max:30',
         'password' => 'required|min:8|max:20'
     ];
@@ -39,7 +39,7 @@ function onStart()
         
         Auth::login($user);
         
-        redirect('/');
+        return redirect('/');
     }
 }
 ?>
@@ -56,7 +56,7 @@ function onStart()
                                     Register
                                 </div>
 
-                                <form class="mt-8" method="POST" x-data="{ show: true, errors: {{ errors }} }">
+                                <form class="mt-8" method="POST" x-data="{ show: true, errors: {{ errors | json_encode }} }">
                                     <div class="mx-auto max-w-lg">
                                         <div class="py-2">
                                             <span class="px-1 text-sm text-grey-600">Full name</span>

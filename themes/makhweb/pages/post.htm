@@ -9,24 +9,36 @@ use RainLab\Blog\Models\Post;
 
 function onStart()
 {
-    $this['post'] = Post::find( $this->param('id') );
+    $this['post'] = Post::findOrFail( $this->param('id') );
 }
 
 function onEnd()
 {
+    //$this->addJs([
+    //    'assets/js/hljs/vendor.js',
+    //    'assets/js/hljs/app.js'
+    //]);
+    
+    $this->addJs('assets/js/hljs/vendor.js');
+    $this->addJs('assets/js/hljs/app.js');
+    
+    $this->addCss(
+        'assets/css/hljs/monokai-sublime.css'
+    );
+    
     $this->page->title = $this->post->title;
 }
 ?>
 ==
-<div id="content">
+<div id="content" class="mt-6">
     <div>
       <a href="#" class="text-3xl font-semibold">
         {{ post.title }}
       </a>
       <div class="text-sm text-blue-500 mt-1">
-        <a class="pr-2 hover:underline" href="#">Programming,</a>
-        <a class="pr-2 hover:underline" href="#">PHP,</a>
-        <a class="pr-2 hover:underline" href="#">Tricks</a>
+      {% for category in post.categories %}
+        <a class="pr-1 hover:underline" href="#">{{ category.name }}{% if not loop.last %},{% endif %}</a>
+      {% endfor %}
       </div>
     </div>
     <div class="mt-8">
