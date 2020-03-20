@@ -67,4 +67,6 @@
   'RainLab\\Pages\\Components\\StaticMenu' => 'plugins\\rainlab\\pages\\components\\StaticMenu.php',
   'RainLab\\Pages\\Components\\StaticBreadcrumbs' => 'plugins\\rainlab\\pages\\components\\StaticBreadcrumbs.php',
   'RainLab\\Pages\\Classes\\Snippet' => 'plugins\\rainlab\\pages\\classes\\Snippet.php',
+  'system\\Controllers\\eventlogs' => 'modules\\system\\controllers\\eventlogs.php',
+  'backend\\Controllers\\accesslogs' => 'modules\\backend\\controllers\\accesslogs.php',
 );

@@ -7,13 +7,13 @@
               >Makh<span class="text-blue-900">web</span></a
             >
             <div class="text-lg text-gray-500 font-semibold">
-              <a class="px-1 lg:px-3 hover:text-red-500" href="#">Laravel</a>/
-              <a class="px-1 lg:px-3 hover:text-blue-500" href="#">PHP</a>/
-              <a class="px-1 lg:px-3 hover:text-yellow-500" href="#"
+              <a class="px-1 lg:px-3 hover:text-red-500" href="{{ 'category' | page({ id: 6, slug: 'laravel' }) }}">Laravel</a>/
+              <a class="px-1 lg:px-3 hover:text-blue-500" href="{{ 'category' | page({ id: 4, slug: 'php' }) }}">PHP</a>/
+              <a class="px-1 lg:px-3 hover:text-yellow-500" href="{{ 'category' | page({ id: 3, slug: 'javascript' }) }}"
                 >JavaScript</a
               >/
-              <a class="px-1 lg:px-3 hover:text-blue-700" href="#">Tricks</a>/
-              <a class="px-1 lg:px-3 hover:text-green-500" href="#"
+              <a class="px-1 lg:px-3 hover:text-blue-700" href="{{ 'category' | page({ id: 5, slug: 'tricks' }) }}">Tricks</a>/
+              <a class="px-1 lg:px-3 hover:text-green-500" href="{{ 'category' | page({ id: 7, slug: 'other-categories' }) }}"
                 >Other categories</a
               >
             </div>
@@ -30,5 +30,5 @@
             </div>
           </template>
         </div>
-      </div>
-    </header>
+     </div>
+</header>

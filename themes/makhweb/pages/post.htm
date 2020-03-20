@@ -37,7 +37,7 @@ function onEnd()
     </a>
     <div class="text-sm text-blue-500 mt-1">
       {% for category in post.categories %}
-      <a class="pr-1 hover:underline" href="#">{{ category.name }}{% if not loop.last %},{% endif %}</a>
+          <a class="pr-1 hover:underline" href="{{ 'category' | page({ id: category.id, slug: category.slug }) }}">{{ category.name }}{% if not loop.last %},{% endif %}</a>
       {% endfor %}
     </div>
   </div>
