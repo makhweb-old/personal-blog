@@ -31,17 +31,17 @@ function onEnd()
 ?>
 ==
 <div id="content" class="mt-6">
-    <div>
-      <a href="#" class="text-3xl font-semibold">
-        {{ post.title }}
-      </a>
-      <div class="text-sm text-blue-500 mt-1">
+  <div>
+    <a href="#" class="text-3xl font-semibold">
+      {{ post.title }}
+    </a>
+    <div class="text-sm text-blue-500 mt-1">
       {% for category in post.categories %}
-        <a class="pr-1 hover:underline" href="#">{{ category.name }}{% if not loop.last %},{% endif %}</a>
+      <a class="pr-1 hover:underline" href="#">{{ category.name }}{% if not loop.last %},{% endif %}</a>
       {% endfor %}
-      </div>
-    </div>
-    <div class="mt-8">
-      {{ post.content_html | raw }}
     </div>
   </div>
+  <div class="mt-8">
+    {{ post.content_html | raw }}
+  </div>
+</div>
