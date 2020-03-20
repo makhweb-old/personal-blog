@@ -1,16 +1,10 @@
 title = "Register"
 url = "/register"
-layout = "default"
+layout = "guest"
 description = "Register page"
 is_hidden = 0
 ==
 <?php
-function onInit()
-{
-    if(Auth::check()){
-        abort(400, "You're already in the system!");
-    }
-}
 function onStart()
 {
     $rules = [
