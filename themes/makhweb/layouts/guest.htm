@@ -7,38 +7,41 @@ function onStart()
         return Redirect::to('/400');
     }
     $this['data'] = [
-        'user' => []
+        'user' => null
     ];
 }
 ?>
 ==
 <!DOCTYPE html>
 <html>
-    <head>
-      <!-- Metas -->
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      <!-- Icons && Styles -->
-      <link href="{{ 'assets/css/app.css' | theme }}" rel="stylesheet">
-      {% styles %}
-      <!-- Scripts -->
-      <script src="{{ 'assets/js/alpine/app.js' | theme }}" defer></script>
-      <title>Makhweb - {{ this.page.title }}</title>
-    </head>
-    <body x-data="{{ data ? (data | json_encode) :  "{}" }}">
 
-        <!-- Header -->
-        <header id="layout-header">
-            {% partial 'nav' %}
-        </header>
+<head>
+    <!-- Metas -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Icons && Styles -->
+    <link href="{{ 'assets/css/app.css' | theme }}" rel="stylesheet">
+    {% styles %}
+    <!-- Scripts -->
+    <script src="{{ 'assets/js/alpine/app.js' | theme }}" defer></script>
+    <title>Makhweb - {{ this.page.title }}</title>
+</head>
 
-        <!-- Content -->
-        <section class="container mx-auto" id="layout-content">
-            {% page %}
-        </section>
+<body x-data="{ ...{{ data | json_encode }}, header: { mobile: { show: false, nav: false }, desktop: { show: false } } }">
+
+    <!-- Header -->
+    <header id="layout-header">
+        {% partial 'nav' %}
+    </header>
+
+    <!-- Content -->
+    <section class="container mx-auto" id="layout-content">
+        {% page %}
+    </section>
 
 
-        {% scripts %}
+    {% scripts %}
 
-    </body>
+</body>
+
 </html>

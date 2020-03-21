@@ -1,34 +1,78 @@
 ==
-<header class="shadow">
-      <div class="container mx-auto h-16">
-        <div class="flex justify-between items-center h-full">
-          <div class="flex items-center">
-            <a href="{{ 'homepage' | page }}" class="text-3xl pr-3 text-indigo-600 font-bold"
-              >Makh<span class="text-blue-900">web</span></a
-            >
-            <div class="text-lg text-gray-500 font-semibold">
-              <a class="px-1 lg:px-3 hover:text-red-500" href="{{ 'category' | page({ id: 6, slug: 'laravel' }) }}">Laravel</a>/
-              <a class="px-1 lg:px-3 hover:text-blue-500" href="{{ 'category' | page({ id: 4, slug: 'php' }) }}">PHP</a>/
-              <a class="px-1 lg:px-3 hover:text-yellow-500" href="{{ 'category' | page({ id: 3, slug: 'javascript' }) }}"
-                >JavaScript</a
-              >/
-              <a class="px-1 lg:px-3 hover:text-blue-700" href="{{ 'category' | page({ id: 5, slug: 'tricks' }) }}">Tricks</a>/
-              <a class="px-1 lg:px-3 hover:text-green-500" href="{{ 'category' | page({ id: 7, slug: 'other-categories' }) }}"
-                >Other categories</a
-              >
-            </div>
+
+<nav id="desktop-nav" class="shadow bg-white">
+  <div class="container mx-auto h-20">
+    <div class="flex justify-between items-center h-full px-4 md:px-0">
+      <div class="flex items-center">
+        <a href="{{ 'homepage' | page }}" class="text-3xl pr-3 text-indigo-600 font-bold">Makh<span class="text-blue-900">web</span></a>
+        <div class="text-xl text-gray-500 font-semibold md:block hidden">
+          <div class="text-lg text-gray-500 font-semibold">
+            <a class="px-1 lg:px-3 hover:text-red-500"
+              href="{{ 'category' | page({ id: 6, slug: 'laravel' }) }}">Laravel</a>/
+            <a class="px-1 lg:px-3 hover:text-blue-500" href="{{ 'category' | page({ id: 4, slug: 'php' }) }}">PHP</a>/
+            <a class="px-1 lg:px-3 hover:text-yellow-500"
+              href="{{ 'category' | page({ id: 3, slug: 'javascript' }) }}">JavaScript</a>
           </div>
-         <template x-if="user">
-            <div class="text-lg text-blue-500 font-semibold rounded">
-              <a href="#" class="px-3 hover:text-blue-900" x-text="user.name"></a>
-            </div>
-          </template>
-          <template x-if="!user">
-            <div class="text-lg text-blue-500 font-semibold rounded">
-              <a href="{{ 'login' | page }}" class="px-3 hover:text-blue-900">Login</a>/
-              <a href="{{ 'register' | page }}" class="px-3 hover:text-blue-900">Sign up</a>
-            </div>
-          </template>
         </div>
-     </div>
-</header>
+      </div>
+      <div class="md:block hidden">
+        <template x-if="user">
+          <div class="text-lg text-blue-500 font-semibold rounded relative">
+            <div class="flex items-center" @click="header.desktop.show = !header.desktop.show">
+              <a href="#" class="hover:text-blue-900" x-text="user.name"></a>
+              <svg class="fill-current h-4 w-4 hover:text-blue-900" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20">
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /> </svg>
+            </div>
+            <ul x-show="header.desktop.show" class="absolute text-gray-700 shadow mt-1">
+              <li><a class="rounded-t text-sm bg-white hover:bg-gray-100 py-2 px-6 block whitespace-no-wrap"
+                  href="/logout">Logout</a></li>
+            </ul>
+          </div>
+        </template>
+        <template x-if="!user">
+          <div class="text-lg text-blue-500 font-semibold rounded">
+            <a href="{{ 'login' | page }}" class="px-3 hover:text-blue-900">Login</a>/
+            <a href="{{ 'register' | page }}" class="px-3 hover:text-blue-900">Sign up</a>
+          </div>
+        </template>
+      </div>
+      <button @click="header.mobile.nav = !header.mobile.nav"
+        class="flex justify-center items-center bg-blue-500 border border-blue-500 h-10 px-5 rounded-full md:hidden focus:outline-none"><svg
+          id="js-nav-menu-show" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+          class="fill-current text-white h-9 w-4">
+          <path
+            d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z">
+          </path>
+        </svg> <svg id="js-nav-menu-hide" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 30"
+          class="fill-current text-white h-9 w-4 hidden">
+          <polygon
+            points="32.8,4.4 28.6,0.2 18,10.8 7.4,0.2 3.2,4.4 13.8,15 3.2,25.6 7.4,29.8 18,19.2 28.6,29.8 32.8,25.6 22.2,15 ">
+          </polygon>
+        </svg></button>
+    </div>
+  </div>
+</nav>
+<nav id="mobile-nav" x-show="header.mobile.nav">
+  <div class="py-3 px-4 text-lg leading-9 text-gray-600 font-semibold">
+    <a class="block px-1 active text-blue lg:px-3"
+      href="{{ 'category' | page({ id: 6, slug: 'laravel' }) }}">Laravel</a>
+    <a class="block px-1 active text-blue lg:px-3" href="{{ 'category' | page({ id: 4, slug: 'php' }) }}">PHP</a>
+    <a class="block px-1 active text-blue lg:px-3"
+      href="{{ 'category' | page({ id: 3, slug: 'javascript' }) }}">JavaScript</a>
+    <p class="text-md font-normal pl-5">Account</p>
+    <template x-if="user">
+      <div class="flex items-center" @click="header.mobile.show = !header.mobile.show">
+        <span class="hover:text-blue-900" x-text="user.name"></span>
+        <svg class="fill-current h-4 w-4 hover:text-blue-900" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /> </svg>
+      </div>
+  </div>
+  <a x-show="header.mobile.show" class="text-md font-normal pl-5">Logout</a>
+  </template>
+  <template x-if="!user">
+    <a href="/login.html" class="block px-1 active text-blue lg:px-3">Login</a>
+    <a href="/register.html" class="block px-1 active text-blue lg:px-3">Sign up</a>
+  </template>
+  </div>
+</nav>
