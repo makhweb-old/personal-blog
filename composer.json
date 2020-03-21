@@ -1,6 +1,6 @@
 {
 	"config": {
-        "vendor-dir": "dependencies"
+        "vendor-dir": "extra/dependencies"
     },
    "require": {
         "ext-pdo_sqlite": "*"
