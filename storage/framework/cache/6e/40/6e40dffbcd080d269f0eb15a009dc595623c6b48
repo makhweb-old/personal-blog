@@ -1,8 +1,11 @@
-1584724245a:1:{s:11:"default.htm";a:6:{s:8:"fileName";s:11:"default.htm";s:7:"content";s:968:"description = "Default layout"
+1584724231a:1:{s:8:"auth.htm";a:6:{s:8:"fileName";s:8:"auth.htm";s:7:"content";s:1063:"description = "Allowed to only the authenticated users"
 ==
 <?php
 function onStart()
 {
+    if(!Auth::check()){
+        return Redirect::to('/400');
+    }
     $this['data'] = [
         'user' => Auth::user()
     ];
@@ -38,7 +41,7 @@ function onStart()
         {% scripts %}
 
     </body>
-</html>";s:5:"mtime";i:1584689378;s:6:"markup";s:828:"<!DOCTYPE html>
+</html>";s:5:"mtime";i:1584689390;s:6:"markup";s:828:"<!DOCTYPE html>
 <html>
     <head>
       <!-- Metas -->
@@ -67,9 +70,12 @@ function onStart()
         {% scripts %}
 
     </body>
-</html>";s:4:"code";s:87:"function onStart()
+</html>";s:4:"code";s:157:"function onStart()
 {
+    if(!Auth::check()){
+        return Redirect::to('/400');
+    }
     $this['data'] = [
         'user' => Auth::user()
     ];
-}";s:11:"description";s:14:"Default layout";}}
+}";s:11:"description";s:39:"Allowed to only the authenticated users";}}
