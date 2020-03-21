@@ -1,2 +1,2 @@
 #!/bin/bash
-php index.php > extra/public/index.html
+php index.php > index.html
