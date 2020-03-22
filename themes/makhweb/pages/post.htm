@@ -10,7 +10,7 @@ use Makhweb\Lights\Models\Comment;
 
 function onStart()
 {
-    if(request()->isMethod('post')){
+    if(request()->isMethod('post') && Auth::check()){
         request()->validate([
             'content' => 'required|max:255'
         ]);
