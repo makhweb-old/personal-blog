@@ -70,4 +70,5 @@
   'system\\Controllers\\eventlogs' => 'modules\\system\\controllers\\eventlogs.php',
   'backend\\Controllers\\accesslogs' => 'modules\\backend\\controllers\\accesslogs.php',
   'Makhweb\\Lights\\Models\\Comment' => 'plugins\\makhweb\\lights\\models\\Comment.php',
+  'Makhweb\\Lights\\Controllers\\SitemapController' => 'plugins\\makhweb\\lights\\controllers\\SitemapController.php',
 );

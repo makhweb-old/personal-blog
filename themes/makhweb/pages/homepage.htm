@@ -36,7 +36,7 @@ function onStart()
 }
 ?>
 ==
-<div id="content" class="py-8">
+<div id="content">
   <div id="posts">
     {% if pinnedPost.exists %}
     <div class="lg:flex bg-gray-100 shadow p-5">
@@ -54,7 +54,7 @@ function onStart()
       </div>
     </div>
     {% endif %}
-    <div class="mt-5 sm:mx-0 mx-6">
+    <div class="mt-5">
       <p class="text-2xl font-serif">Last posts</p>
       <hr />
       <div class="pt-2">
@@ -73,7 +73,7 @@ function onStart()
       <a class="text-sm text-blue-500" href="#">Show more</a>
     </div>
     {% for post in otherPosts %}
-    <div class="mt-3 sm:mx-0 mx-6">
+    <div class="mt-3">
       <a href="{{ 'post' | page({ slug: post.slug, id: post.id }) }}" class="text-xl font-semibold">
         {{ post.title }}
       </a>

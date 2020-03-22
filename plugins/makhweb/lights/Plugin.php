@@ -1,6 +1,7 @@
 <?php namespace Makhweb\Lights;
 
 use Backend;
+use Route;
 use System\Classes\PluginBase;
 use RainLab\Blog\Models\Post;
 use RainLab\User\Models\User;
@@ -49,6 +50,7 @@ class Plugin extends PluginBase
         User::extend(function($model){
             $model->hasMany['comments'] = Comment::class;
         });
+        Route::group(['prefix' => 'makhweb/lights', 'namespace' => 'Makhweb\Lights\Controllers'], plugins_path('makhweb/lights/routes/web.php'));
     }
 
     /**

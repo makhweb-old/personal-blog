@@ -1,18 +1,16 @@
 ==
 
-<nav id="desktop-nav" class="shadow bg-white">
+<nav id="desktop-nav" class="shadow">
   <div class="container mx-auto h-20">
     <div class="flex justify-between items-center h-full px-4 md:px-0">
       <div class="flex items-center">
         <a href="{{ 'homepage' | page }}" class="text-3xl pr-3 text-indigo-600 font-bold">Makh<span class="text-blue-900">web</span></a>
         <div class="text-xl text-gray-500 font-semibold md:block hidden">
-          <div class="text-lg text-gray-500 font-semibold">
             <a class="px-1 lg:px-3 hover:text-red-500"
               href="{{ 'category' | page({ id: 6, slug: 'laravel' }) }}">Laravel</a>/
             <a class="px-1 lg:px-3 hover:text-blue-500" href="{{ 'category' | page({ id: 4, slug: 'php' }) }}">PHP</a>/
             <a class="px-1 lg:px-3 hover:text-yellow-500"
               href="{{ 'category' | page({ id: 3, slug: 'javascript' }) }}">JavaScript</a>
-          </div>
         </div>
       </div>
       <div class="md:block hidden">
@@ -26,7 +24,7 @@
             </div>
             <ul x-show="header.desktop.show" class="absolute text-gray-700 shadow mt-1">
               <li><a class="rounded-t text-sm bg-white hover:bg-gray-100 py-2 px-6 block whitespace-no-wrap"
-                  href="/logout">Logout</a></li>
+                  href="{{ 'logout' | page }}">Logout</a></li>
             </ul>
           </div>
         </template>
@@ -53,7 +51,8 @@
     </div>
   </div>
 </nav>
-<nav id="mobile-nav" x-show="header.mobile.nav">
+<template x-if="header.mobile.nav">
+	<nav id="mobile-nav" class="sm:hidden block">
   <div class="py-3 px-4 text-lg leading-9 text-gray-600 font-semibold">
     <a class="block px-1 active text-blue lg:px-3"
       href="{{ 'category' | page({ id: 6, slug: 'laravel' }) }}">Laravel</a>
@@ -68,11 +67,12 @@
           <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /> </svg>
       </div>
   </div>
-  <a x-show="header.mobile.show" class="text-md font-normal pl-5">Logout</a>
+  <a x-show="header.mobile.show"  class="text-md font-normal pl-5" href="{{ 'logout' | page }}">Logout</a>
   </template>
   <template x-if="!user">
-    <a href="/login.html" class="block px-1 active text-blue lg:px-3">Login</a>
-    <a href="/register.html" class="block px-1 active text-blue lg:px-3">Sign up</a>
+    <a href="{{ 'login' | page }}" class="block px-1 active text-blue lg:px-3">Login</a>
+    <a href="{{ 'register' | page }}" class="block px-1 active text-blue lg:px-3">Sign up</a>
   </template>
   </div>
-</nav>
+   </nav>
+</template>
