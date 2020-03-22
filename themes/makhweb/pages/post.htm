@@ -52,37 +52,37 @@ function onEnd()
     </a>
     <div class="text-sm text-blue-500 mt-1">
       {% for category in post.categories %}
-          <a class="pr-1 hover:underline" href="{{ 'category' | page({ id: category.id, slug: category.slug }) }}">{{ category.name }}{% if not loop.last %},{% endif %}</a>
+      <a class="pr-1 hover:underline"
+        href="{{ 'category' | page({ id: category.id, slug: category.slug }) }}">{{ category.name }}{% if not loop.last %},{% endif %}</a>
       {% endfor %}
     </div>
   </div>
   <div class="mt-8">
     {{ post.content_html | raw }}
   </div>
-  
-  <div x-show="user">
+
   <div id="comments" class="py-8" x-data="{ replied_to: null, name: null }"
-      @updated="replied_to = $event.detail.replied_to; name = $event.detail.name">
-      <p class="text-2xl font-semibold py-3">Comments:</p>
-      <form method="POST" class="mb-3">
-        <textarea
-          name="content"
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="username" type="text" :placeholder="replied_to ? 'Reply to ' + name : 'Enter your comment'"
-          rows="3" required></textarea>
-        <div x-show="replied_to" @click="$dispatch('updated', { replied_to: null, name: null })"
-          class="my-1 hover:underline text-blue-600 cursor-pointer">Cancel response</div>
-        <input type="hidden" name="replied_to" :value="replied_to" />
-        <input type="submit" :value="replied_to ? 'Reply' : 'Send'"
-          class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-4">
-      </form>
-      <hr>
-      <div class="py-6">
-        {% for postComment in post.comments %}
-            {% partial 'comment' comment=postComment %}
-        {% endfor %}
-      </div>
+    @updated="replied_to = $event.detail.replied_to; name = $event.detail.name">
+    <p class="text-2xl font-semibold py-3">Comments:</p>
+    {% if user %}
+    <form method="POST" class="mb-3">
+      <textarea name="content"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="username" type="text" :placeholder="replied_to ? 'Reply to ' + name : 'Enter your comment'" rows="3"
+        required></textarea>
+      <div x-show="replied_to" @click="$dispatch('updated', { replied_to: null, name: null })"
+        class="my-1 hover:underline text-blue-600 cursor-pointer">Cancel response</div>
+      <input type="hidden" name="replied_to" :value="replied_to" />
+      <input type="submit" :value="replied_to ? 'Reply' : 'Send'"
+        class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-4">
+    </form>
+    {% endif %}
+    <hr>
+    <div class="py-6">
+      {% for postComment in post.comments %}
+      {% partial 'comment' comment=postComment auth=user %}
+      {% endfor %}
     </div>
   </div>
-  
+
 </div>
