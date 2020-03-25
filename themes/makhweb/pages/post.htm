@@ -64,7 +64,7 @@ function onEnd()
   <div id="comments" class="py-8" x-data="{ replied_to: null, name: null }"
     @updated="replied_to = $event.detail.replied_to; name = $event.detail.name">
     <p class="text-2xl font-semibold py-3">Comments:</p>
-    {% if user %}
+    {% if data.user %}
     <form method="POST" class="mb-3">
       <textarea name="content"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -80,7 +80,7 @@ function onEnd()
     <hr>
     <div class="py-6">
       {% for postComment in post.comments %}
-      {% partial 'comment' comment=postComment auth=user %}
+      {% partial 'comment' comment=postComment auth=data.user %}
       {% endfor %}
     </div>
   </div>
